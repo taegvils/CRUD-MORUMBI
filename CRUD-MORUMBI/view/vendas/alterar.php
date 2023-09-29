@@ -29,7 +29,7 @@ if(isset($_POST['submetido'])) {
     if($id_tours) {
         $tours = new Tours();
         $tours->setId($id_tours);
-        $vendas->setId_Tours($tours);
+        $vendas->setTours($tours);
     }
 
     //Criar um vendasController 
