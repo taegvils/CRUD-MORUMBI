@@ -1,19 +1,21 @@
 <?php
 
-require_once(__DIR__ . "/?.php");
 
 class Vendas {
 
     private ?int $id;
     private ?string $nome;
     private ?int $cpf;
-    private ?int $id_idolo;
-    private ?int $id_tours;
-    private ?Vendas $vendas;
-
-  public function __construct() {
+    private ?Idolo $idolo;
+    private ?Tours $tours;
+    
+    public function __construct() {
         $this->id = 0;
-        $this->vendas = null;
+        $this->nome = null;
+        $this->cpf = null;
+        $this->idolo = null; // Inicializa a propriedade $id_idolo como nula
+        $this->tours = null;
+        
     }
 
     public function getId()
@@ -55,31 +57,45 @@ class Vendas {
         return $this;
     }
 
-    public function getId_Tours()
+
+
+    /**
+     * Get the value of tours
+     */ 
+    public function getTours()
     {
-        return $this->id_tours;
+        return $this->tours;
     }
 
-   
-    public function setId_Tours($id_tours)
+    /**
+     * Set the value of tours
+     *
+     * @return  self
+     */ 
+    public function setTours($tours)
     {
-        $this->id_tours = $id_tours;
+        $this->tours = $tours;
 
         return $this;
     }
 
-    public function getId_Idolo()
+    /**
+     * Get the value of idolo
+     */ 
+    public function getIdolo()
     {
-        return $this->id_idolo;
+        return $this->idolo;
     }
 
-   
-    public function setId_Idolo($id_idolo)
+    /**
+     * Set the value of idolo
+     *
+     * @return  self
+     */ 
+    public function setIdolo($idolo)
     {
-        $this->id_idolo = $id_idolo;
+        $this->idolo = $idolo;
 
         return $this;
     }
-
-
 }
