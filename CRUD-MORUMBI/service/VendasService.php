@@ -19,12 +19,12 @@ class VendasService {
         }
 
         //Validar idolo
-        if(! $vendas->getId_Idolo()) {
+        if(! $vendas->getIdolo()) {
             array_push($erros, "Informe o idolo!");
         }
 
         //Validar tour
-        if(! $vendas->getId_Tours()) {
+        if(! $vendas->getTours()) {
             array_push($erros, "Informe o tour!");
         }
 
