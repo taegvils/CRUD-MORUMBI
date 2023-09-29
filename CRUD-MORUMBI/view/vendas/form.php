@@ -27,13 +27,15 @@ $tours = $toursCont->listar();
 
     <div>
         <label for="selTours">Tours:</label>
-        <select id="selTours" name="tours">
-            <option value="">---Selecione---</option>
+        <select id="selTours" name="tour">
+            <option value="">Jogar com idolo</option>
+            <option value="">Ensaio fotografico</option>
+            <option value="">Tour no estadio</option>
             
             <?php foreach($tours as $tour): ?>
                 <option value="<?= $tour->getId(); ?>"
                     <?php 
-                        if($vendas && $vendas->gettours() && 
+                        if($vendas && $vendas->getTours() && 
                             $vendas->getTours()->getId() == $tour->getId())
                             echo 'selected';
                     ?>
