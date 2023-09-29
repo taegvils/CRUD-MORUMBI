@@ -1,5 +1,5 @@
 <?php 
-//Classe service para aluno
+//Classe service para Vendas
 
 require_once(__DIR__ . "/../model/Vendas.php");
 
@@ -13,18 +13,18 @@ class VendasService {
             array_push($erros, "Informe o nome!");
         }
 
-        //Validar a idade
+        //Validar o cpf
         if(! $vendas->getCpf()) {
             array_push($erros, "Informe o cpf!");
         }
 
-        //Validar estrangeiro
-        if(! $vendas->getIdolo()) {
+        //Validar idolo
+        if(! $vendas->getId_Idolo()) {
             array_push($erros, "Informe o idolo!");
         }
 
-        //Validar curso
-        if(! $vendas->getTours()) {
+        //Validar tour
+        if(! $vendas->getId_Tours()) {
             array_push($erros, "Informe o tour!");
         }
 

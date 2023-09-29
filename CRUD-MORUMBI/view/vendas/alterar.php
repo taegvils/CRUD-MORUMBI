@@ -21,7 +21,7 @@ if(isset($_POST['submetido'])) {
     $idvendas = $_POST['id'];
     
     //Criar um objeto vendas para persistência
-    $vendas = new vendas();
+    $vendas = new Vendas();
     $vendas->setId($id_vendas);
     $vendas->setNome($nome);
     $vendas->setCPF($cpf);
@@ -29,7 +29,7 @@ if(isset($_POST['submetido'])) {
     if($id_tours) {
         $tours = new Tours();
         $tours->setId($id_tours);
-        $vendas->setTours($tours);
+        $vendas->setId_Tours($tours);
     }
 
     //Criar um vendasController 

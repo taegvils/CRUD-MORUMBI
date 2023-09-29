@@ -4,7 +4,7 @@ require_once(__DIR__ . "/../util/Connection.php");
 require_once(__DIR__ . "/../model/Tours.php");
 require_once(__DIR__ . "/../model/Vendas.php");
 
-class AlunoDAO {
+class VendasDAO {
 
     private $conn;
 
@@ -71,37 +71,38 @@ class AlunoDAO {
         $stmt->execute([$id]);
         $result = $stmt->fetchAll();
 
-        $alunos = $this->mapBancoParaObjeto($result);
+        $vendas = $this->mapBancoParaObjeto($result);
 
-        if(count($alunos) == 1)
-            return $alunos[0];
-        elseif(count($alunos) == 0)
+        if(count($vendas) == 1)
+            return $vendas[0];
+        elseif(count($vendas) == 0)
             return null;
 
-        die("AlunoDAO.findById - Erro: mais de um aluno".
+        die("VendasDAO.findById - Erro: mais de uma venda".
                 " encontrado para o ID " . $id);
     }
 
     private function mapBancoParaObjeto($result) {
-        $alunos = array();
+        $vendass = array();
 
         foreach($result as $reg) {
             $vendas = new Vendas();
             $vendas->setId($reg['id'])
-                ->setNome($reg['nome'])
-                ->setEstrangeiro($reg['estrangeiro'])
-                ->setIdade($reg['idade']);
+            ->setNome($reg['nomeVisitante'])
+            ->setCpf($reg['cpf'])
+            ->setId_Idolo($reg['id_idolo'])
+            ->setId_Tours($reg['id_tours']);
 
-            $curso = new Curso();
-            $curso->setId($reg['id_curso'])
-                ->setNome($reg['nome_curso'])
-                ->setTurno($reg['turno_curso']);            
-            $aluno->setCurso($curso);
+            $tours = new Tours();
+            $tours->setId($reg['id'])
+                ->setTipo($reg['tipoTour'])
+                ->setData($reg['dataTour']);            
+            $vendas->setId_Tours($tours);
 
-            array_push($alunos, $aluno);
+            array_push($vendass, $vendas);
         }
 
-        return $alunos;
+        return $vendass;
     }
 
 }

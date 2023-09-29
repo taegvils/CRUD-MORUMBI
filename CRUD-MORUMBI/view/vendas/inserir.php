@@ -20,11 +20,11 @@ if(isset($_POST['submetido'])) {
     $vendas = new Vendas();
     $vendas->setNome($nome);
     $vendas->setCpf($cpf);
-    $vendas->setIdolo($idolo);
+    $vendas->setId_Idolo($idolo);
     if($idTours) {
-        $tours = new Curso();
+        $tours = new Tours();
         $tours->setId($idTours);
-        $tours->setTours($tours);
+        $tours->setId_Tours($tours);
     }
 
     //Criar um alunoController
