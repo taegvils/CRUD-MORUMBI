@@ -36,9 +36,9 @@ require(__DIR__ . "/../include/header.php");
         <?php foreach($vendas as $v): ?>
             <tr>
                 <td><?= $v->getNome(); ?></td>
-                <td><?= $v->getIdade(); ?></td>
+                <td><?= $v->getCpf(); ?></td>
                 <td><?= $v->getIdolo(); ?></td>
-                <td><?= $v->getTours(); ?></td>
+                <td><?= $v->getTours()->getTipo(); ?></td>
                 <td><a href="alterar.php?idVendas=<?= $v->getId() ?>"> 
                         <img src="../../img/btn_editar.png" /> 
                     </a>
