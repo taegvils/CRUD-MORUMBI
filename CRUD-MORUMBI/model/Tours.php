@@ -55,4 +55,44 @@ class Tours {
     }
 
 
+
+    /**
+     * Get the value of tours
+     */ 
+    public function getTours()
+    {
+        return $this->tours;
+    }
+
+    /**
+     * Set the value of tours
+     *
+     * @return  self
+     */ 
+    public function setTours($tours)
+    {
+        $this->tours = $tours;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idolo
+     */ 
+    public function getIdolo()
+    {
+        return $this->idolo;
+    }
+
+    /**
+     * Set the value of idolo
+     *
+     * @return  self
+     */ 
+    public function setIdolo($idolo)
+    {
+        $this->idolo = $idolo;
+
+        return $this;
+    }
 }
