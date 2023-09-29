@@ -16,8 +16,9 @@ class VendasController {
     }
 
     public function listar() {
-        return $this->vendasDAO->list();        
+        return $this->vendasDAO->listAll();
     }
+    
 
     public function buscarPorId(int $id) {
         return $this->vendasDAO->findById($id);
