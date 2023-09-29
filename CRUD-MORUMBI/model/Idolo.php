@@ -1,6 +1,5 @@
 <?php
-//Modelo para Aluno
-require_once(__DIR__ . "/?.php");
+//Modelo para 
 
 class Idolo {
 
