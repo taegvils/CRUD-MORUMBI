@@ -3,6 +3,7 @@
 require_once(__DIR__ . "/../util/Connection.php");
 require_once(__DIR__ . "/../model/Idolo.php");
 
+
 class ToursDAO {
 
     private $conn;
@@ -20,16 +21,16 @@ class ToursDAO {
     }
 
     private function mapBancoParaObjeto($result) {
-        $tous = array();
+        $tours = array();
         foreach($result as $reg) {
-            $tuors = new Tours();
-            $tuors->setId($reg['id'])
+            $tours = new Tours();
+            $tours->setId($reg['id'])
                 ->setTipo($reg['tipo'])
                 ->setData($reg['data']);
-            array_push($idolo, $tuors);
+            array_push($idolo, $tours);
         }
 
-        return $tuors;
+        return $tours;
     }
 
 }
