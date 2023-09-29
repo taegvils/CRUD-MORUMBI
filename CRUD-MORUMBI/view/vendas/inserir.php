@@ -4,6 +4,7 @@
 require_once(__DIR__ . "/../../controller/VendasController.php");
 require_once(__DIR__ . "/../../model/Vendas.php");
 require_once(__DIR__ . "/../../model/Tours.php");
+require_once(__DIR__ . "/../../model/Idolo.php");
 
 $msgErro = '';
 $vendas = null;
@@ -11,21 +12,21 @@ $vendas = null;
 if(isset($_POST['submetido'])) {
     //echo "clicou no gravar";
     //Captura os campo do formulário
-    $nome = trim($_POST['nome']) ? trim($_POST['nome']) : null;
-    $idade = $_POST['idade'] ? $_POST['idade'] : null;
-    $estrang = trim($_POST['estrang']) ? trim($_POST['estrang']) : null;
-    $idCurso = is_numeric($_POST['curso']) ? $_POST['curso'] : null;
+    $nomeVisitante = trim($_POST['nome']) ? trim($_POST['nome']) : null;
+    $cpf = $_POST['cpf'] ? $_POST['cpf'] : null;
+    $tours = trim($_POST['tour']) ? trim($_POST['tour']) : null;
+    $idolo = isset($_POST['idolo']) ? trim($_POST['idolo']) : null;
+
+    
     
     //Criar um objeto Aluno para persistência
     $vendas = new Vendas();
-    $vendas->setNome($nome);
+    $vendas->setNome($nomeVisitante);
     $vendas->setCpf($cpf);
-    $vendas->setId_Idolo($idolo);
-    if($idTours) {
-        $tours = new Tours();
-        $tours->setId($idTours);
-        $tours->setId_Tours($tours);
-    }
+    $vendas->setTours($tours);
+    $vendas->setIdolo($idolo);
+
+   
 
     //Criar um alunoController
     $vendasCont = new VendasController();
@@ -44,5 +45,4 @@ if(isset($_POST['submetido'])) {
 
 //Inclui o formulário
 include_once(__DIR__ . "/form.php");
-
 
