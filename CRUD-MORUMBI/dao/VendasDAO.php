@@ -20,22 +20,23 @@ class VendasDAO {
         $stmt->execute([$vendas->getId(),
                         $vendas->getNome(), 
                         $vendas->getCpf(), 
-                        $vendas->getId_Tours(), 
-                        $vendas->getId_Idolo()]);
+                        $vendas->getTours(), 
+                        $vendas->getIdolo()]);
     }
 
     public function update(Vendas $vendas) {
         $conn = Connection::getConnection();
 
         $sql = "UPDATE vendas SET id = ?, nomeVisitante = ?,". 
-            " cpf = ?, id_idolos = ?, id_tours".
-            " WHERE id = ?";
+        " cpf = ?, id_idolo = ?, id_tours = ?".
+        " WHERE id = ?";
+    
         $stmt = $conn->prepare($sql);
         $stmt->execute([$vendas->getId(),
                         $vendas->getNome(), 
                         $vendas->getCpf(), 
-                        $vendas->getId_Tours(), 
-                        $vendas->getId_Idolo()]);
+                        $vendas->getTours(), 
+                        $vendas->getIdolo()]);
     }
 
     public function deleteById(int $id) {
@@ -46,18 +47,17 @@ class VendasDAO {
         $stmt->execute([$id]);
     }
 
-    public function list() {
-        $sql = "SELECT v.*," . 
-                " t.nome AS nome_curso, c.turno AS turno_curso" . 
-                " FROM alunos a" .
-                " JOIN cursos c ON (c.id = a.id_curso)" . 
-                " ORDER BY a.nome";
+    public function listAll() {
+        $sql = "SELECT v.*, t.tipoTour" . 
+                " FROM vendas v" .
+                " JOIN tours t ON (t.id = v.id_tours)" . 
+                " ORDER BY v.id_tours"; // Corrigindo o erro de vírgula e o nome da coluna
         $stm = $this->conn->prepare($sql);
         $stm->execute();
         $result = $stm->fetchAll();
         return $this->mapBancoParaObjeto($result);
     }
-
+    
     public function findById(int $id) {
         $conn = Connection::getConnection();
 
@@ -84,25 +84,34 @@ class VendasDAO {
 
     private function mapBancoParaObjeto($result) {
         $vendass = array();
-
-        foreach($result as $reg) {
+    
+        foreach ($result as $reg) {
             $vendas = new Vendas();
             $vendas->setId($reg['id'])
-            ->setNome($reg['nomeVisitante'])
-            ->setCpf($reg['cpf'])
-            ->setId_Idolo($reg['id_idolo'])
-            ->setId_Tours($reg['id_tours']);
-
+                ->setNome($reg['nomeVisitante'])
+                ->setCpf($reg['cpf']);
+    
             $tours = new Tours();
-            $tours->setId($reg['id'])
-                ->setTipo($reg['tipoTour'])
-                ->setData($reg['dataTour']);            
-            $vendas->setId_Tours($tours);
+            $tours->setId($reg['id']);
+            $tours->setTipo($reg['tipoTour']);            
 
+            $vendas->setTours($tours);
+    
+            // Verificar se as chaves estão definidas antes de acessá-las
+            if (isset($reg['tipoTour'])) {
+                $tours->setTipo($reg['tipoTour']);
+            }
+    
+            if (isset($reg['dataTour'])) {
+                $tours->setData($reg['dataTour']);
+            }
+    
+    
             array_push($vendass, $vendas);
         }
-
+    
         return $vendass;
     }
+    
 
 }
