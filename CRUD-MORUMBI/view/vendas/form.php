@@ -3,6 +3,7 @@
 
 require_once(__DIR__ . "/../../controller/ToursController.php");
 require_once(__DIR__ . "/../include/header.php");
+//require_once(__DIR__ . "/../include/Vendas.php");
 
 $toursCont = new ToursController();
 $tours = $toursCont->listar();
@@ -16,7 +17,7 @@ $tours = $toursCont->listar();
     <div>
         <label for="txtNome">Nome:</label>
         <input type="text" name="nome" id="txtNome"
-            value="<?php echo ($vendas ? $vendas->getNome() : ''); ?>" />
+            value="<?php echo ($vendas ? $vendas->getNomeVisitante() : ''); ?>" />
     </div>
 
     <div>
@@ -28,6 +29,8 @@ $tours = $toursCont->listar();
     <div>
         <label for="selTours">Tours:</label>
         <select id="selTours" name="tour">
+            
+            <option value="">---</option>
             <option value="">Jogar com idolo</option>
             <option value="">Ensaio fotografico</option>
             <option value="">Tour no estadio</option>
@@ -40,10 +43,16 @@ $tours = $toursCont->listar();
                             echo 'selected';
                     ?>
                 >
-                    <?= $tour->getNome(); ?>
+                    <?= $tour->getNomeVisitante(); ?>
                 </option>
             <?php endforeach; ?>
         </select>
+    </div>
+
+    <div>
+        <label for="txtIdolo">Nome Idolo:</label>
+        <input type="text" name="nome idolo" id="txtIdolo"
+            value="<?php echo ($vendas ? $vendas->getIdolo() : ''); ?>" />
     </div>
 
     <input type="hidden" name="id" 

@@ -1,19 +1,20 @@
 <?php
 
+//require_once(__DIR__ . "/../../model/Idolo.php");
 
 class Vendas {
 
     private ?int $id;
-    private ?string $nome;
+    private ?string $nomeVisitante;
     private ?int $cpf;
     private ?Idolo $idolo;
     private ?Tours $tours;
     
     public function __construct() {
         $this->id = 0;
-        $this->nome = null;
+        $this->nomeVisitante = null;
         $this->cpf = null;
-        $this->idolo = null; // Inicializa a propriedade $id_idolo como nula
+        $this->idolo = null;
         $this->tours = null;
         
     }
@@ -30,15 +31,15 @@ class Vendas {
         return $this;
     }
 
-    public function getNome()
+    public function getNomeVisitante()
     {
-        return $this->nome;
+        return $this->nomeVisitante;
     }
 
    
-    public function setNome($nome)
+    public function setNomeVisitante($nomeVisitante)
     {
-        $this->nome = $nome;
+        $this->nomeVisitante = $nomeVisitante;
 
         return $this;
     }

@@ -25,7 +25,6 @@ require(__DIR__ . "/../include/header.php");
     <thead>
         <tr>
             <th>Nome</th>
-            <th>Idade</th>
             <th>Idolo</th>
             <th>Tours</th>
             <th></th>
@@ -35,7 +34,7 @@ require(__DIR__ . "/../include/header.php");
     <tbody>
         <?php foreach($vendas as $v): ?>
             <tr>
-                <td><?= $v->getNome(); ?></td>
+                <td><?= $v->getNomeVisitante(); ?></td>
                 <td><?= $v->getCpf(); ?></td>
                 <td><?= $v->getIdolo(); ?></td>
                 <td><?= $v->getTours()->getTipo(); ?></td>

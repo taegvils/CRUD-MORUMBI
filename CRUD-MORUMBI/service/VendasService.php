@@ -9,7 +9,7 @@ class VendasService {
         $erros = array();
         
         //Validar o nome
-        if(! $vendas->getNome()) {
+        if(! $vendas->getNomeVisitante()) {
             array_push($erros, "Informe o nome!");
         }
 

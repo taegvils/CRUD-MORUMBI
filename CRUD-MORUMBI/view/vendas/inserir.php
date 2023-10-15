@@ -3,8 +3,8 @@
 
 require_once(__DIR__ . "/../../controller/VendasController.php");
 require_once(__DIR__ . "/../../model/Vendas.php");
-require_once(__DIR__ . "/../../model/Tours.php");
-require_once(__DIR__ . "/../../model/Idolo.php");
+//require_once(__DIR__ . "/../../model/Tours.php");
+//require_once(__DIR__ . "/../../model/Idolo.php");
 
 $msgErro = '';
 $vendas = null;
@@ -19,9 +19,9 @@ if(isset($_POST['submetido'])) {
 
     
     
-    //Criar um objeto Aluno para persistência
+    
     $vendas = new Vendas();
-    $vendas->setNome($nomeVisitante);
+    $vendas->setNomeVisitante($nomeVisitante);
     $vendas->setCpf($cpf);
     $vendas->setTours($tours);
     $vendas->setIdolo($idolo);

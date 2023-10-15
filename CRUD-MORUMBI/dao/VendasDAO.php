@@ -18,7 +18,7 @@ class VendasDAO {
                 " VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$vendas->getId(),
-                        $vendas->getNome(), 
+                        $vendas->getNomeVisitante(), 
                         $vendas->getCpf(), 
                         $vendas->getTours(), 
                         $vendas->getIdolo()]);
@@ -33,7 +33,7 @@ class VendasDAO {
     
         $stmt = $conn->prepare($sql);
         $stmt->execute([$vendas->getId(),
-                        $vendas->getNome(), 
+                        $vendas->getNomeVisitante(), 
                         $vendas->getCpf(), 
                         $vendas->getTours(), 
                         $vendas->getIdolo()]);
@@ -51,7 +51,7 @@ class VendasDAO {
         $sql = "SELECT v.*, t.tipoTour" . 
                 " FROM vendas v" .
                 " JOIN tours t ON (t.id = v.id_tours)" . 
-                " ORDER BY v.id_tours"; // Corrigindo o erro de vírgula e o nome da coluna
+                " ORDER BY v.id_tours";
         $stm = $this->conn->prepare($sql);
         $stm->execute();
         $result = $stm->fetchAll();
@@ -59,13 +59,13 @@ class VendasDAO {
     }
     
     public function findById(int $id) {
-        $conn = Connection::getConnection();
+       $conn = Connection::getConnection();
 
-        $sql = "SELECT a.*," . 
-                " c.nome AS nome_curso, c.turno AS turno_curso" . 
-                " FROM alunos a" .
-                " JOIN cursos c ON (c.id = a.id_curso)" .
-                " WHERE a.id = ?";
+        $sql = "SELECT v.*," . 
+                " t.nome AS nome_tours, t.idolo AS idolo_tours" . 
+                " FROM vendas v" .
+                " JOIN tours t ON (t.id = v.id_tours)" .
+                " WHERE v.id = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$id]);
@@ -88,22 +88,22 @@ class VendasDAO {
         foreach ($result as $reg) {
             $vendas = new Vendas();
             $vendas->setId($reg['id'])
-                ->setNome($reg['nomeVisitante'])
+                ->setNomeVisitante($reg['nomeVisitante'])
                 ->setCpf($reg['cpf']);
     
             $tours = new Tours();
             $tours->setId($reg['id']);
-            $tours->setTipo($reg['tipoTour']);            
+            $tours->setTipoTour($reg['tipoTour']);            
 
             $vendas->setTours($tours);
     
             // Verificar se as chaves estão definidas antes de acessá-las
             if (isset($reg['tipoTour'])) {
-                $tours->setTipo($reg['tipoTour']);
+                $tours->setTipoTour($reg['tipoTour']);
             }
     
             if (isset($reg['dataTour'])) {
-                $tours->setData($reg['dataTour']);
+                $tours->setDataTour($reg['dataTour']);
             }
     
     

@@ -1,5 +1,6 @@
 <?php
-//Modelo para 
+
+//require_once(__DIR__ . '/../../model/Vendas.php');
 
 class Idolo {
 
@@ -23,7 +24,6 @@ class Idolo {
         return $this;
     }
 
-    
     public function getIdolo()
     {
         return $this->idolo;
@@ -35,7 +35,5 @@ class Idolo {
 
         return $this;
     }
-
-
 
 }

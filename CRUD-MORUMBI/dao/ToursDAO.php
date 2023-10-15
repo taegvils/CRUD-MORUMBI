@@ -2,7 +2,7 @@
 
 require_once(__DIR__ . "/../util/Connection.php");
 require_once(__DIR__ . "/../model/Idolo.php");
-
+require_once(__DIR__ . "/../model/Tours.php");
 
 class ToursDAO {
 
@@ -25,9 +25,8 @@ class ToursDAO {
         foreach($result as $reg) {
             $tours = new Tours();
             $tours->setId($reg['id'])
-                ->setTipo($reg['tipo'])
-                ->setData($reg['data']);
-            array_push($idolo, $tours);
+                ->setTipoTour($reg['tipoTour'])
+                ->setDataTour($reg['dataTour']);
         }
 
         return $tours;

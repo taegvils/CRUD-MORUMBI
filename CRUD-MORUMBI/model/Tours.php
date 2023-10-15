@@ -1,18 +1,16 @@
 <?php
 //Modelo para Aluno
-require_once(__DIR__ . "/Idolo.php");
+//require_once(__DIR__ . "/Idolo.php");
 
 class Tours {
 
     private ?int $id;
-    private ?string $tipo;
-    private ?int $data;
-    private ?Tours $tours;
-    private ?Idolo $idolo;
+    private ?string $tipoTour;
+    private ?string $dataTour;
 
   public function __construct() {
         $this->id = 0;
-        $this->tours = null;
+        $this->tipoTour = null;
     }
 
     public function getId()
@@ -28,71 +26,31 @@ class Tours {
         return $this;
     }
 
-    public function getTipo()
+    public function getTipoTour()
     {
-        return $this->tipo;
+        return $this->tipoTour;
     }
 
 
-    public function setTipo($tipo)
+    public function setTipoTour($tipoTour)
     {
-        $this->tipo = $tipo;
+        $this->tipoTour = $tipoTour;
 
         return $this;
     }
 
-    public function getData()
+    public function getDataTour()
     {
-        return $this->data;
+        return $this->dataTour;
     }
 
    
-    public function setData($data)
+    public function setDataTour($dataTour)
     {
-        $this->data = $data;
+        $this->dataTour = $dataTour;
 
         return $this;
     }
 
 
-
-    /**
-     * Get the value of tours
-     */ 
-    public function getTours()
-    {
-        return $this->tours;
-    }
-
-    /**
-     * Set the value of tours
-     *
-     * @return  self
-     */ 
-    public function setTours($tours)
-    {
-        $this->tours = $tours;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of idolo
-     */ 
-    public function getIdolo()
-    {
-        return $this->idolo;
-    }
-
-    /**
-     * Set the value of idolo
-     *
-     * @return  self
-     */ 
-    public function setIdolo($idolo)
-    {
-        $this->idolo = $idolo;
-
-        return $this;
-    }
 }
